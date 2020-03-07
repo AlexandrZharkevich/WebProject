@@ -11,7 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-First JSP
-<p>Today <%=new java.util.Date()%>></p>
+<p style="color: red">${errorMessage}</p>
+<form action="login" method="post">
+    <p>Name: <input type="text" name="name"></p>
+    <p>Password: <input type="password" name="password"></p>
+    <input type="submit">
+</form>
 </body>
 </html>
