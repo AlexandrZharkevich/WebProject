@@ -39,6 +39,9 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="LoginServlet">Login</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="LogoutServlet">Logout</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container">
