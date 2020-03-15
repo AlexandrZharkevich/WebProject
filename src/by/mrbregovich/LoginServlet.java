@@ -31,8 +31,4 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             throws javax.servlet.ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
     }
-
-//    public boolean validateUser(String user, String password) {
-//        return user.equalsIgnoreCase("admin") && password.equals("admin");
-//    }
 }
