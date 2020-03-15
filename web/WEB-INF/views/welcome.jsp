@@ -61,7 +61,7 @@
             </tr>
         </c:forEach>
     </table>
-    <p><font color="red">${errorMessage}</font></p>
+    <p style="color: red">${errorMessage}</p>
     <form method="POST" action="GroupServlet">
         Новый :
         <p> Введите имя <input name="nname" type="text"/></p>

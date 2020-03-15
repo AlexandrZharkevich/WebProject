@@ -19,7 +19,6 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
         if (daoUser.isValidUser(name, password)) {
             request.setAttribute("name", name);
-            //response.sendRedirect(request.getContextPath() + "/GroupServlet");
             request.getRequestDispatcher("/GroupServlet").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Invalid Login and Password!!");
