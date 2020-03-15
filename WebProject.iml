@@ -20,8 +20,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="jstl-1.2" level="project" />
+    <orderEntry type="library" exported="" name="jstl-1.2" level="project" />
     <orderEntry type="library" name="bootstrap-4.3.1" level="project" />
     <orderEntry type="library" name="jquery-3.3.1" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.19" level="project" />
   </component>
 </module>
