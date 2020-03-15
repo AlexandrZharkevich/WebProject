@@ -11,6 +11,7 @@
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="jquery-3.3.1" />
           <element id="library" level="project" name="bootstrap-4.3.1" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.19" />
         </element>
       </element>
     </root>

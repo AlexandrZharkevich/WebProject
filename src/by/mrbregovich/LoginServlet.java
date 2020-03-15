@@ -1,5 +1,6 @@
 package by.mrbregovich;
 
+import by.mrbregovich.dao.UserDAO;
 import by.mrbregovich.list.ListService;
 
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +15,12 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
 
-        if (validateUser(name, password)) {
-            request.getSession().setAttribute("name", name);
-            response.sendRedirect(request.getContextPath() + "/GroupServlet");
+        UserDAO daoUser = new UserDAO();
+
+        if (daoUser.isValidUser(name, password)) {
+            request.setAttribute("name", name);
+            //response.sendRedirect(request.getContextPath() + "/GroupServlet");
+            request.getRequestDispatcher("/GroupServlet").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Invalid Login and Password!!");
             request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
@@ -28,7 +32,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
     }
 
-    public boolean validateUser(String user, String password) {
-        return user.equalsIgnoreCase("admin") && password.equals("admin");
-    }
+//    public boolean validateUser(String user, String password) {
+//        return user.equalsIgnoreCase("admin") && password.equals("admin");
+//    }
 }
