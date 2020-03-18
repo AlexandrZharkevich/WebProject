@@ -1,6 +1,7 @@
 package by.mrbregovich;
 
 import by.mrbregovich.dao.UserDAO;
+import by.mrbregovich.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,8 @@ public class RegisterServlet extends HttpServlet {
 
         UserDAO daoUser = new UserDAO();
 
-        if (!daoUser.isLoginAlreadyUsed(name)) {
-            daoUser.insertUser(name, password);
+        if (!daoUser.isLoginExists(name)) {
+            daoUser.insertUser(name, Password.getSaltedHash(password));
             request.setAttribute("name", name);
             request.getRequestDispatcher("/GroupServlet").forward(request, response);
         } else {

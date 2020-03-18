@@ -1,6 +1,7 @@
 package by.mrbregovich.dao;
 
 import by.mrbregovich.util.ConnectorDB;
+import by.mrbregovich.util.Password;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,12 +35,13 @@ public class UserDAO {
     public boolean isValidUser(final String login, final String password) {
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement(SQL_GET_USER);
+            ps = connection.prepareStatement(SQL_GET_USER_BY_LOGIN);
             ps.setString(1, login);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return true;
+                if (Password.check(password, rs.getString("passw")))
+                    return true;
+                return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +57,7 @@ public class UserDAO {
         return false;
     }
 
-    public boolean isLoginAlreadyUsed(final String login) {
+    public boolean isLoginExists(final String login) {
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(SQL_GET_USER_BY_LOGIN);
