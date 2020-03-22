@@ -1,5 +1,6 @@
 package by.mrbregovich.dao;
 
+import by.mrbregovich.model.User;
 import by.mrbregovich.util.ConnectorDB;
 import by.mrbregovich.util.Password;
 
@@ -38,10 +39,8 @@ public class UserDAO {
             ps = connection.prepareStatement(SQL_GET_USER_BY_LOGIN);
             ps.setString(1, login);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                if (Password.check(password, rs.getString("passw")))
-                    return true;
-                return false;
+            if (rs.next()) {
+                return Password.check(password, rs.getString("passw"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +62,7 @@ public class UserDAO {
             ps = connection.prepareStatement(SQL_GET_USER_BY_LOGIN);
             ps.setString(1, login);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 return true;
             }
         } catch (SQLException e) {
@@ -80,23 +79,20 @@ public class UserDAO {
         return false;
     }
 
-    public void insertUser(String name, String password) {
-        PreparedStatement ps = null;
+    public boolean insertUser(User user) {
         try {
-            ps = connection.prepareStatement(SQL_INSERT_USER);
-            ps.setString(1, name);
-            ps.setString(2, password);
-            ps.executeUpdate();
+            if (isLoginExists(user.getLogin())) {
+                return false;
+            } else {
+                PreparedStatement ps = connection.prepareStatement(SQL_INSERT_USER);
+                ps.setString(1, user.getLogin());
+                ps.setString(2, Password.getSaltedHash(user.getPassw()));
+                ps.executeUpdate();
+                ps.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+        return true;
     }
 }

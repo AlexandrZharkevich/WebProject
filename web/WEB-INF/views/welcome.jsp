@@ -45,7 +45,7 @@
     </div>
 </nav>
 <div class="container">
-    <H2>Welcome ${name}</H2>
+    <H2>Welcome ${username}</H2>
     <table border="1">
         <caption>Список вашей группы</caption>
         <tr>

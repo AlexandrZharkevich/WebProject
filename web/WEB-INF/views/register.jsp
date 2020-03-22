@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Введите данные для регистрации</h2>
-<p style="color: red">${errorMessage}</p>
+<p style="color: red">${errorRegister}</p>
 <form action="RegisterServlet" method="post">
     <div class="form-group">
         <label for="name">Name</label><br>

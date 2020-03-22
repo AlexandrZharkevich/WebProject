@@ -4,8 +4,10 @@ import by.mrbregovich.dao.UserDAO;
 import by.mrbregovich.list.ListService;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 @WebServlet(urlPatterns = "/LoginServlet")
 public class LoginServlet extends javax.servlet.http.HttpServlet {
@@ -18,7 +20,21 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         UserDAO daoUser = new UserDAO();
 
         if (daoUser.isValidUser(name, password)) {
-            request.setAttribute("name", name);
+            request.getSession().setAttribute("username", name);
+
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie c : cookies) {
+                    Cookie cookie = c;
+                    System.out.println(cookie.getName() + cookie.getValue());
+                    if (name.equals(cookie.getName()))
+                        request.setAttribute("lastdate", cookie.getValue());
+                }
+            }
+            Cookie userCookie = new Cookie(name, LocalDate.now().toString());
+            userCookie.setMaxAge(60 * 60 * 24 * 100);
+            response.addCookie(userCookie);
+
             request.getRequestDispatcher("/GroupServlet").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Invalid Login and Password!!");
