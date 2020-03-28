@@ -21,13 +21,13 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(name, password);
 
         if (daoUser.insertUser(user)) {
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            request.getRequestDispatcher("views/login.jsp").forward(request, response);
         } else {
             request.setAttribute("errorRegister", "Выберите другое имя, такой пользователь существует");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request, response);
+        request.getRequestDispatcher("views/register.jsp").forward(request, response);
     }
 }

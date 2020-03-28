@@ -13,7 +13,7 @@
     <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .footer {
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
             height: 60px;
@@ -67,7 +67,7 @@
         <p> Введите имя <input name="nname" type="text"/></p>
         <p> Введите телефон <input name="nphone" type="text"/></p>
         <p> Введите email <input name="nemail" type="text"/></p>
-        <input name="add" type="submit"/>
+        <button name="add" class="btn btn-primary btn-lg" type="submit"/>
     </form>
 </div>
 <footer class="footer">

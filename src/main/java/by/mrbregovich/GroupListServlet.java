@@ -29,7 +29,7 @@ public class GroupListServlet extends HttpServlet {
             daoPerson.insertPerson(new Person(nname, nphone, nemail));
         request.setAttribute("group", daoPerson.getPersonList());
         daoPerson.closeConnection();
-        request.getRequestDispatcher("WEB-INF/views/welcome.jsp").forward(request, response);
+        request.getRequestDispatcher("views/welcome.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +37,6 @@ public class GroupListServlet extends HttpServlet {
 
         request.setAttribute("group", daoPerson.getPersonList());
         daoPerson.closeConnection();
-        request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+        request.getRequestDispatcher("views/welcome.jsp").forward(request, response);
     }
 }
