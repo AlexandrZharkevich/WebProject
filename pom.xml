@@ -35,6 +35,14 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>1.7.25</version>-->
+<!--        </dependency>-->
+
+
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -50,7 +58,6 @@
     </dependencies>
 
     <build>
-
         <finalName>FinalWebApp</finalName>
         <plugins>
             <plugin>
@@ -62,15 +69,23 @@
                     <target>13</target>
                 </configuration>
             </plugin>
-
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>internal.repo</id>
-            <name>Internal repo</name>
-            <url>file://d:/repo</url>
-        </repository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>internal.repo</id>-->
+<!--            <name>Internal repo</name>-->
+<!--            <url>file://d:/repo</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
 </project>
