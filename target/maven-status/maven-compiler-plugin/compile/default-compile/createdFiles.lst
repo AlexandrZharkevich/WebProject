@@ -1,0 +1,13 @@
+by\mrbregovich\LoginServlet.class
+by\mrbregovich\model\User.class
+by\mrbregovich\list\Person.class
+by\mrbregovich\filter\LoginRequiredFilter.class
+by\mrbregovich\util\Password.class
+by\mrbregovich\LogoutServlet.class
+by\mrbregovich\list\ListService.class
+by\mrbregovich\model\Person.class
+by\mrbregovich\dao\PersonDAO.class
+by\mrbregovich\dao\UserDAO.class
+by\mrbregovich\RegisterServlet.class
+by\mrbregovich\util\ConnectorDB.class
+by\mrbregovich\GroupListServlet.class
