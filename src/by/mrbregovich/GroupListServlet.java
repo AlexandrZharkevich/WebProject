@@ -22,7 +22,7 @@ public class GroupListServlet extends HttpServlet {
         String nname = request.getParameter("nname");
         String nphone = request.getParameter("nphone");
         String nemail = request.getParameter("nemail");
-        //if (nname == null || nphone == null || nemail == null)        УТОЧНИТЬ!!!!!!!!!!!!!!!
+        //if (nname == null || nphone == null || nemail == null)       // УТОЧНИТЬ!!!!!!!!!!!!!!!
         if ("".equals(nname) || "".equals(nphone) || "".equals(nemail))
             request.setAttribute("errorMessage", "Заполните все поля");
         else
